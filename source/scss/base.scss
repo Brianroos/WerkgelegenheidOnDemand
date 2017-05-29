@@ -8,6 +8,11 @@ $grid-column-count: 24;
 $font-primary: 'Roboto', sans-serif;
 $color-white: #FFF;
 $color-black: #000;
+$color-darkgrey: #3C3C3C;
+$color-orange: #FC814A;
+$color-lightorange: #FF9768;
+$color-blue: #2FC3B6;
+$color-lightblue: #85DAD2;
 @import 'mixins';
 @import 'typography';
 
@@ -31,4 +36,23 @@ body {
 .no-padding {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Leaflet map components */
+#map-container.leaflet-container {
+  height: 600px;
+
+  .leaflet-bar {
+    border: 2px solid rgba(0, 0, 0, .1);
+
+    .leaflet-control-zoom-in,
+    .leaflet-control-zoom-out {
+      font-family: $font-primary;
+      color: $color-darkgrey;
+      font-weight: 500;
+    }
+  }
+  .leaflet-bottom {
+    display: none;
+  }
 }
