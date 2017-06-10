@@ -1,0 +1,96 @@
+.search-form {
+  padding: 20px 0 10px;
+}
+
+.content.company-information {
+  @include block(absolute);
+  bottom: -20px;
+  left: 0;
+  background: $color-white;
+  width: 100%;
+  padding: 20px 0 10px;
+  z-index: 3;
+  @include box-shadow(0, 0, 4px, rgba(0, 0, 0, .25));
+
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  &.show {
+    bottom: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .close.close-information {
+    @include block(absolute);
+    @include square(20px);
+    top: 10px;
+    right: 10px;
+    background: $color-darkgrey;
+    color: $color-white;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+  h3 {
+    font-family: $font-primary;
+    font-weight: 500;
+    color: $color-darkgrey;
+    font-size: 26px;
+    line-height: 26px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin: 0 0 10px;
+  }
+  .sections {
+    margin: 0 0 10px;
+
+    .section {
+      position: relative;
+      padding: 15px 0 15px 45px;
+      border-top: 1px solid $color-grey;
+      &:first-child {
+        border-top: none;
+      }
+
+      .icon {
+        @include block(absolute);
+        top: 15px;
+        bottom: 19px;
+        left: 0;
+        width: 45px;
+        background-repeat: no-repeat;
+        background-size: auto 16px;
+        background-position: 10px center;
+        &.category {
+          background-image: url('../img/icon-category.png');
+        }
+        &.date {
+          background-image: url('../img/icon-date.png');
+        }
+        &.reward {
+          background-image: url('../img/icon-time.png');
+        }
+        &.location {
+          background-image: url('../img/icon-location.png');
+        }
+      }
+      p {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+
+        span {
+          font-weight: 300;
+        }
+      }
+    }
+  }
+}

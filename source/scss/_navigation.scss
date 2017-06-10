@@ -1,0 +1,32 @@
+.top-navigation {
+  position: relative;
+  background: $color-white;
+  padding: 10px 0;
+  height: 50px;
+  z-index: 1;
+  @include box-shadow(0, 0, 4px, rgba(0, 0, 0, .25));
+
+  .logo {
+    img {
+      max-height: 36px;
+      position: relative;
+      top: -3px;
+    }
+  }
+  .nav-buttons {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: right;
+
+    a {
+      margin-left: 10px;
+      &:first-child {
+        margin-left: 0;
+      }
+
+      img {
+        max-height: 20px;
+      }
+    }
+  }
+}
