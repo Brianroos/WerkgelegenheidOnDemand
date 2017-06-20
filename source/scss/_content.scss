@@ -1,94 +1,196 @@
-.search-form {
-  padding: 20px 0 10px;
+.intro {
+  @include size(100%, 100vh);
+  display: table;
+
+  .row {
+    display: table-cell;
+    vertical-align: middle;
+
+    img {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 40px;
+    }
+  }
 }
 
-.content.company-information {
-  @include block(absolute);
-  bottom: -20px;
-  left: 0;
-  background: $color-white;
+.login-form,
+.search-form {
+  float: left;
   width: 100%;
-  padding: 20px 0 10px;
-  z-index: 3;
-  @include box-shadow(0, 0, 4px, rgba(0, 0, 0, .25));
+  padding: 20px 0;
+}
 
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: all .4s;
-  transition: all .4s;
-  &.show {
-    bottom: 0;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .close.close-information {
+.content {
+  &.company-information {
     @include block(absolute);
-    @include square(20px);
-    top: 10px;
-    right: 10px;
-    background: $color-darkgrey;
-    color: $color-white;
-    text-align: center;
-    font-size: 14px;
-    line-height: 20px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+    bottom: -20px;
+    left: 0;
+    background: $color-white;
+    width: 100%;
+    padding: 20px 0 10px;
+    z-index: 3;
+    @include box-shadow(0, 0, 4px, rgba(0, 0, 0, .25));
+
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+    &.show {
+      bottom: 0;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .close.close-information {
+      @include block(absolute);
+      @include square(20px);
+      top: 10px;
+      right: 10px;
+      background: $color-darkgrey;
+      color: $color-white;
+      text-align: center;
+      font-size: 14px;
+      line-height: 20px;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+    h3 {
+      font-family: $font-primary;
+      font-weight: 500;
+      color: $color-darkgrey;
+      font-size: 26px;
+      line-height: 26px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.2px;
+      margin: 0 0 10px;
+    }
+    .sections {
+      margin: 0 0 10px;
+
+      .section {
+        position: relative;
+        padding: 15px 10px 15px 45px;
+        border-top: 1px solid $color-grey;
+        &:first-child {
+          border-top: none;
+        }
+
+        .icon {
+          @include block(absolute);
+          top: 15px;
+          bottom: 19px;
+          left: 0;
+          width: 45px;
+          background-repeat: no-repeat;
+          background-size: auto 16px;
+          background-position: 10px center;
+          &.category {
+            background-image: url('../img/icon-category.png');
+          }
+          &.date {
+            background-image: url('../img/icon-date.png');
+          }
+          &.reward {
+            background-image: url('../img/icon-time.png');
+          }
+          &.location {
+            background-image: url('../img/icon-location.png');
+          }
+        }
+        p {
+          display: table-cell;
+          vertical-align: middle;
+          font-size: 14px;
+          line-height: 20px;
+          font-weight: 400;
+
+          span {
+            font-weight: 300;
+          }
+        }
+      }
+    }
   }
-  h3 {
-    font-family: $font-primary;
-    font-weight: 500;
-    color: $color-darkgrey;
-    font-size: 26px;
-    line-height: 26px;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 0.2px;
-    margin: 0 0 10px;
-  }
-  .sections {
-    margin: 0 0 10px;
+  &.applications-information {
+    height: calc(100vh - 50px); // Height from navigation
+    overflow-y: auto;
 
     .section {
       position: relative;
-      padding: 15px 0 15px 45px;
-      border-top: 1px solid $color-grey;
+      background: $color-white;
+      margin: 10px 0;
+      padding: 15px 10px 15px 45px;
+      border-bottom: 2px solid $color-blue;
       &:first-child {
-        border-top: none;
+        margin-bottom: 0;
       }
 
-      .icon {
+      .a-options {
         @include block(absolute);
         top: 15px;
-        bottom: 19px;
+        bottom: 15px;
         left: 0;
         width: 45px;
-        background-repeat: no-repeat;
-        background-size: auto 16px;
-        background-position: 10px center;
-        &.category {
-          background-image: url('../img/icon-category.png');
-        }
-        &.date {
-          background-image: url('../img/icon-date.png');
-        }
-        &.reward {
-          background-image: url('../img/icon-time.png');
-        }
-        &.location {
-          background-image: url('../img/icon-location.png');
+        padding: 0 10px;
+
+        .options-wrap {
+          position: relative;
+          display: table;
+          height: 100%;
+
+          .options-inside {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+
+            a {
+              display: inline-block;
+              margin-top: 10px;
+              &:first-child {
+                margin-top: 0;
+              }
+
+              img {
+                height: 20px;
+              }
+            }
+          }
         }
       }
-      p {
-        display: table-cell;
-        vertical-align: middle;
-        font-size: 14px;
-        line-height: 20px;
-        font-weight: 400;
+      .a-information {
+        h4 {
+          font-family: $font-primary;
+          font-weight: 500;
+          color: $color-darkgrey;
+          font-size: 20px;
+          line-height: 20px;
+          text-transform: uppercase;
+          letter-spacing: 0.2px;
+          margin: 0 0 7px;
+        }
+        ul {
+          margin: 0;
+          list-style: none;
 
-        span {
-          font-weight: 300;
+          li {
+            margin-top: 1px;
+            &:first-child {
+              margin-top: 0;
+              margin-bottom: 7px;
+            }
+            font-family: $font-primary;
+            font-weight: 400;
+            color: $color-darkgrey;
+            font-size: 14px;
+            line-height: 20px;
+
+            span {
+              font-weight: 300;
+            }
+          }
         }
       }
     }

@@ -12,17 +12,11 @@
         height: 56px;
         input {
           &[type=range] {
-            width: 60vw;
-            @include breakpoint(large) {
-              width: 50vw;
-            }
+            width: 65%;
           }
           &[type=number] {
-            width: 30vw;
+            width: 30%;
             float: right;
-            @include breakpoint(large) {
-              width: 20vw;
-            }
           }
         }
       }
@@ -118,7 +112,7 @@
           -webkit-appearance: none;
           @include size(8px, 20px);
           margin-top: -9px;
-          background: $color-blue;
+          background: $color-darkgrey;
           border-radius: 4px;
           cursor: pointer;
         }
@@ -130,7 +124,7 @@
         &::-moz-range-thumb,
         &::-ms-thumb {
           @include size(8px, 20px);
-          background: $color-blue;
+          background: $color-darkgrey;
           border-radius: 4px;
           cursor: pointer;
         }

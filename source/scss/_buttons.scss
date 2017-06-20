@@ -1,12 +1,13 @@
 .btn {
   @include block;
-  background: $color-orange;
+  background: $color-blue;
   width: 100%;
   margin: 0;
   padding: 10px 20px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  cursor: pointer;
 
   font-family: $font-primary;
   font-weight: 400;
@@ -19,6 +20,6 @@
   &:focus,
   &:hover {
     color: $color-white;
-    background: $color-lightorange;
+    background: $color-lightblue;
   }
 }

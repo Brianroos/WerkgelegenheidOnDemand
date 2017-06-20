@@ -10,10 +10,10 @@ $color-white: #FFF;
 $color-black: #000;
 $color-grey: #EBEBEB;
 $color-darkgrey: #3C3C3C;
-$color-orange: #FC814A;
-$color-lightorange: #FF9768;
 $color-blue: #2FC3B6;
 $color-lightblue: #85DAD2;
+$color-orange: #FC814A;
+$color-lightorange: #FF9768;
 @import 'mixins';
 @import 'buttons';
 @import 'forms';
@@ -30,7 +30,7 @@ html, body {
   height: 100%;
 }
 body {
-  background: $color-white;
+  background: rgba(232, 228, 200, 0.3);
   font-family: $font-primary;
   color: $color-darkgrey;
   overflow: hidden;

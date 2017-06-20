@@ -15,13 +15,23 @@
     <div class="top-navigation">
       <div class="row">
         <div class="columns logo small-12">
-          <a href="#"><img src="img/logo.png" alt="Werkgelegenheid On Demand"></a>
+          <a href="search.php"><img src="img/logo.png" alt="Werkgelegenheid On Demand"></a>
         </div>
         <div class="columns nav-buttons small-12">
           <a class="close-current" href="#"><img src="img/close.png" alt=""></a>
           <a class="open-menu" href="#"><img src="img/menu.png" alt=""></a>
         </div>
       </div>
+    </div>
+    <div class="main-navigation">
+      <a class="close-menu" href="#"><img src="img/close.png" alt=""></a>
+      <nav>
+        <ul>
+          <li><a href="#">Nieuwe zoekopdracht</a></li>
+          <li><a href="#">Overzicht aanmeldingen</a></li>
+          <li><a href="#">Uitloggen</a></li>
+        </ul>
+      </nav>
     </div>
 
     <div id="map-container"></div>
