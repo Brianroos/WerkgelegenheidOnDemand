@@ -1,3 +1,46 @@
+<?php
+  session_start();
+  require 'config.php';
+
+  if(!isset($_SESSION['loggedIn'])) {
+    header("location: index.php");
+    exit;
+  } else if((isset($_GET['action']) && $_GET['action'] === 'logout')) {
+    session_destroy();
+    header('location: index.php');
+    exit;
+  }
+?>
+<?php
+  if(isset($_POST['submit'])) {
+    $_SESSION['searchedWork'] = ''; // Clear searched work current session
+
+    $prefJob = mysql_real_escape_string($_POST['prefJob']);
+    $prefHours = mysql_real_escape_string($_POST['prefHours']);
+    $prefRadius = mysql_real_escape_string($_POST['prefRadius']);
+
+    if($prefJob == 0) {
+      $query = 'SELECT * FROM werkgelegenheidWork
+        INNER JOIN werkgelegenheidCompanies ON werkgelegenheidWork.companyId = werkgelegenheidCompanies.id
+        WHERE hours <= "'. $prefHours .'"';
+    } else {
+      $query = 'SELECT * FROM werkgelegenheidWork
+        INNER JOIN werkgelegenheidCompanies ON werkgelegenheidWork.companyId = werkgelegenheidCompanies.id
+        WHERE tag = "'. $prefJob .'" AND hours <= "'. $prefHours .'"';
+    }
+    $result = mysql_query($query, $conn);
+
+    if(mysql_num_rows($result) > 0) {
+      while($row = mysql_fetch_assoc($result)) {
+        $row['radius'] = $prefRadius;
+        $_SESSION['searchedWork'][] = $row;
+      }
+
+      header('location: overview.php');
+      exit;
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +69,9 @@
       <a class="close-menu" href="#"><img src="img/close.png" alt=""></a>
       <nav>
         <ul>
-          <li><a href="#">Nieuwe zoekopdracht</a></li>
-          <li><a href="#">Overzicht aanmeldingen</a></li>
-          <li><a href="#">Uitloggen</a></li>
+          <li><a href="search.php">Nieuwe zoekopdracht</a></li>
+          <li><a href="applications-overview.php">Overzicht aanmeldingen</a></li>
+          <li><a href="?action=logout">Uitloggen</a></li>
         </ul>
       </nav>
     </div>
@@ -38,18 +81,19 @@
     <div class="form search-form">
       <div class="row">
         <div class="columns">
-          <form action="#" method="post">
+          <form action="search.php" method="post">
             <div class="form-row">
               <label for="prefJob">Soort werk</label>
               <select name="prefJob">
                 <option value="0">Alle soorten</option>
-                <option value="1">Soort werk 1</option>
-                <option value="2">Soort werk 2</option>
+                <option value="1">Kantoor</option>
+                <option value="2">Winkel</option>
+                <option value="3">Club</option>
               </select>
             </div>
             <div class="form-row">
-              <label for="prefHours">Aantal uur</label>
-              <input type="number" name="prefHours" placeholder="2" min="1" max="8">
+              <label for="prefHours">Beschikbare aantal uur</label>
+              <input type="number" name="prefHours" placeholder="2" min="1" max="8" required>
             </div>
             <div class="form-row range-row">
               <label for="prefRadius">Straal <span>(in meters)</span></label>

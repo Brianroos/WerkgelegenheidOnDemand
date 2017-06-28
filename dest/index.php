@@ -1,3 +1,28 @@
+<?php
+  session_start();
+  require 'config.php';
+?>
+<?php
+  if(isset($_POST['submit'])) {
+    $email = mysql_real_escape_string($_POST['email']);
+    $pass = mysql_real_escape_string($_POST['password']);
+
+    $query = 'SELECT * FROM werkgelegenheidStudents WHERE email = "'. $email .'" AND password = "'. $pass .'"';
+    $result = mysql_query($query, $conn);
+
+    if($query) {
+      if($row = mysql_fetch_assoc($result)) {
+        $_SESSION['loggedIn'] = true;
+        $_SESSION['user'] = $row;
+
+        if($_SESSION['loggedIn'] && $_SESSION['loggedIn'] == true) {
+          header('location: search.php');
+          exit;
+        }
+      }
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +43,7 @@
           <img src="img/logo-big.png" alt="Werkgelegenheid On Demand">
 
           <div class="form login-form">
-            <form action="#" method="post">
+            <form action="index.php" method="post">
               <div class="form-row">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" required>

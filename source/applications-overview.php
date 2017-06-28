@@ -1,3 +1,16 @@
+<?php
+  session_start();
+  require 'config.php';
+
+  if(!isset($_SESSION['loggedIn'])) {
+    header("location: index.php");
+    exit;
+  } else if((isset($_GET['action']) && $_GET['action'] === 'logout')) {
+    session_destroy();
+    header('location: index.php');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +39,9 @@
       <a class="close-menu" href="#"><img src="img/close.png" alt=""></a>
       <nav>
         <ul>
-          <li><a href="#">Nieuwe zoekopdracht</a></li>
-          <li><a href="#">Overzicht aanmeldingen</a></li>
-          <li><a href="#">Uitloggen</a></li>
+          <li><a href="search.php">Nieuwe zoekopdracht</a></li>
+          <li><a href="applications-overview.php">Overzicht aanmeldingen</a></li>
+          <li><a href="?action=logout">Uitloggen</a></li>
         </ul>
       </nav>
     </div>
@@ -41,16 +54,33 @@
               <div class="a-options">
                 <div class="options-wrap">
                   <div class="options-inside">
-                    <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a>
-                    <a class="notify-application" href="#"><img src="img/notify.png" alt=""></a>
+                    <!-- <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a> -->
+                    <!-- <a class="notify-application" href="#"><img src="img/notify.png" alt=""></a> -->
                   </div>
                 </div>
               </div>
               <div class="a-information">
-                <h4>Bedrijf A</h4>
+                <h4>ZARA</h4>
                 <ul>
-                  <li>Winkel, voorraad bijvullen</li>
-                  <li>Woensdag 7 juni, 2 <span>uur werk</span>, 10 <span>p.u.</span></li>
+                  <li>Winkel, kleedkamer medewerker</li>
+                  <li>Dinsdag 27 juni, 2 <span>uur werk</span>, 11 <span>p.u.</span></li>
+                  <li>Binnenwegplein 31, 3012 KA Rotterdam</li>
+                </ul>
+              </div>
+            </div>
+            <div class="section">
+              <div class="a-options">
+                <div class="options-wrap">
+                  <div class="options-inside">
+                    <!-- <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a> -->
+                  </div>
+                </div>
+              </div>
+              <div class="a-information">
+                <h4>Media Markt</h4>
+                <ul>
+                  <li>Winkel, voorraden vullen</li>
+                  <li>Woensdag 28 juni, 2 <span>uur werk</span>, 10 <span>p.u.</span></li>
                   <li>Binnenwegplein 50-52, 3012 KA Rotterdam</li>
                 </ul>
               </div>
@@ -59,50 +89,16 @@
               <div class="a-options">
                 <div class="options-wrap">
                   <div class="options-inside">
-                    <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a>
+                    <!-- <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a> -->
                   </div>
                 </div>
               </div>
               <div class="a-information">
-                <h4>Bedrijf B</h4>
+                <h4>NORA</h4>
                 <ul>
-                  <li>Winkel, voorraad bijvullen</li>
-                  <li>Woensdag 7 juni, 2 <span>uur werk</span>, 10 <span>p.u.</span></li>
-                  <li>Binnenwegplein 50-52, 3012 KA Rotterdam</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section">
-              <div class="a-options">
-                <div class="options-wrap">
-                  <div class="options-inside">
-                    <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a>
-                  </div>
-                </div>
-              </div>
-              <div class="a-information">
-                <h4>Bedrijf C</h4>
-                <ul>
-                  <li>Winkel, voorraad bijvullen</li>
-                  <li>Woensdag 7 juni, 2 <span>uur werk</span>, 10 <span>p.u.</span></li>
-                  <li>Binnenwegplein 50-52, 3012 KA Rotterdam</li>
-                </ul>
-              </div>
-            </div>
-            <div class="section">
-              <div class="a-options">
-                <div class="options-wrap">
-                  <div class="options-inside">
-                    <a class="delete-application" href="#"><img src="img/delete.png" alt=""></a>
-                  </div>
-                </div>
-              </div>
-              <div class="a-information">
-                <h4>Bedrijf D</h4>
-                <ul>
-                  <li>Winkel, voorraad bijvullen</li>
-                  <li>Woensdag 7 juni, 2 <span>uur werk</span>, 10 <span>p.u.</span></li>
-                  <li>Binnenwegplein 50-52, 3012 KA Rotterdam</li>
+                  <li>Club, voorraden vullen</li>
+                  <li>Donderdag 29 juni, 1 <span>uur werk</span>, 11 <span>p.u.</span></li>
+                  <li>Coolsingel 18, 3011 AD Rotterdam</li>
                 </ul>
               </div>
             </div>
